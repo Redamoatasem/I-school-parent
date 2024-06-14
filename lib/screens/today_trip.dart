@@ -1,168 +1,60 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mobile_tracker_two/screens/bus_info.dart';
-import 'package:mobile_tracker_two/screens/live.dart';
 
+import 'bus_info.dart';
+import 'live.dart';
 import 'notification.dart';
+
 class TodayTrip extends StatelessWidget {
   const TodayTrip({super.key});
   static const String routeName = 'today-trip';
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 30,),
-        Padding(
-          padding: EdgeInsets.all(15,),
-          child: Container(
-            width: 396,
-            height: 66,
-            decoration: BoxDecoration(color: Color(0xffc1cbd1),borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Row(
-              children: [
-                SizedBox(width: 10,),
-                Image.asset('assets/parent_logo.png'),
-                SizedBox(width: 50,),
-                Text('Student Home Road',style: TextStyle(fontSize: 20),),
-              ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 30,
+          ),
+          Padding(
+            padding: EdgeInsets.all(
+              15,
             ),
-          ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Padding(
-          padding: EdgeInsets.all(
-            15,
-          ),
-          child: Container(
-            height: 166,
-            width: 396,
-            decoration: BoxDecoration(
-              color: Color(0xffc1cbd1),
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  25,
-                ),
+            child: Container(
+              width: 396,
+              height: 66,
+              decoration: BoxDecoration(
+                  color: Color(0xffc1cbd1),
+                  borderRadius: BorderRadius.all(Radius.circular(20))),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset('assets/parent_logo.png'),
+                  SizedBox(
+                    width: 50,
+                  ),
+                  Text(
+                    'Student Home Road',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ],
               ),
             ),
-            child: Padding(padding: EdgeInsets.all(10,),child: Row(
-              children: [
-                Image.asset('assets/picture_one.png',height: 89,width: 89,),
-                SizedBox(width: 10,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text('Ahmed Mohamed',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16),),
-                    SizedBox(height: 5,),
-                    Text('Class 5-C',style: TextStyle(color: Colors.grey[700],fontWeight: FontWeight.w400,fontSize: 12),),
-                    SizedBox(height: 5,),
-                    Row(
-                      children: [
-                        Text('Time to go out',style: TextStyle(color: Colors.grey[700],fontWeight: FontWeight.w400,fontSize: 12),),
-                        SizedBox(width: 5,),
-                        Text('2.00',style: TextStyle(color: Colors.orange,fontWeight: FontWeight.w400,fontSize: 12),),
-                      ],
-                    ),
-                    SizedBox(height: 5,),
-                    Row(
-                      children: [
-                        CircleAvatar(backgroundColor: Colors.green,radius: 5),
-                        SizedBox(width: 5,),
-                        Text('In Bus',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 13),),
-                      ],
-                    ),
-                    SizedBox(height: 5,),
-                    GestureDetector(onTap: () => Navigator.pushNamed(context, BusInfo.routeName),child: Row(
-                      children: [
-                        Icon(Icons.info,color: Colors.orange,),
-                        SizedBox(width: 5,),
-                        Text('Bus Info')
-                      ],
-                    ),)
-                  ],
-                ),
-                SizedBox(width: 10,),
-                GestureDetector(
-                  child: Container(width: 90,height: 33,decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10),),color: Color(0xff0450E3),),child: Padding(padding: EdgeInsets.only(top: 5),child: Text('Track',textAlign: TextAlign.center)),),
-                  onTap: () {
-                    Navigator.pushNamed(context, Live.routeName);
-                  },
-                )
-
-              ],
-            ),),
           ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Padding(
-          padding: EdgeInsets.all(
-            15,
+          SizedBox(
+            height: 15,
           ),
-          child: Container(
-            height: 166,
-            width: 396,
-            decoration: BoxDecoration(
-              color: Color(0xffc1cbd1),
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  25,
-                ),
-              ),
-            ),
-            child: Padding(padding: EdgeInsets.all(10,),child: Row(
-              children: [
-                Image.asset('assets/picture_two.png',height: 89,width: 89,),
-                SizedBox(width: 10,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  //mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(height: 25,),
-                    Text('Hour Mohamed',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 16),),
-                    SizedBox(height: 5,),
-                    Text('Class 4-A',style: TextStyle(color: Colors.grey[700],fontWeight: FontWeight.w400,fontSize: 12),),
-                    SizedBox(height: 5,),
-                    Row(
-                      children: [
-                        Text('Time to go out',style: TextStyle(color: Colors.grey[700],fontWeight: FontWeight.w400,fontSize: 12),),
-                        SizedBox(width: 5,),
-                        Text('12.00',style: TextStyle(color: Colors.orange,fontWeight: FontWeight.w400,fontSize: 12),),
-                      ],
-                    ),
-                    SizedBox(height: 5,),
-                    Row(
-                      children: [
-                        CircleAvatar(backgroundColor: Colors.green,radius: 5),
-                        SizedBox(width: 5,),
-                        Text('In Bus',style: TextStyle(fontWeight: FontWeight.w400,fontSize: 13),),
-                      ],
-                    ),
-                    SizedBox(height: 5,),
-                    GestureDetector(child: Row(
-                      children: [
-                        Icon(Icons.info,color: Colors.orange,),
-                        SizedBox(width: 5,),
-                        Text('Bus Info')
-                      ],
-                    ),
-                      onTap: () => Navigator.pushNamed(context, BusInfo.routeName),
-                    )
-
-                  ],
-                ),
-                SizedBox(width: 10,),
-                Container(width: 90,height: 33,decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10),),color: Color(0xff98bbff),),child: Padding(padding: EdgeInsets.only(top: 5),child: Text('Track',textAlign: TextAlign.center)),)
-              ],
-            ),),
-          ),),
-      ],
+          BuildPersonToTrack(context, 'Aya Hossam',
+              'https://firebasestorage.googleapis.com/v0/b/ischool-web-a2d36.appspot.com/o/admin%2Fimage%2FAya%20Hossam.jpg?alt=media&token=174cd4f7-2705-4ab6-abdc-84066bfbead0'),
+          BuildPersonNotToTrack(context, 'Omnia Hossam',
+              'https://firebasestorage.googleapis.com/v0/b/ischool-web-a2d36.appspot.com/o/admin%2Fimage%2FOmnia%20Hossam.jpg?alt=media&token=dada4ad2-8cd7-4ea1-b8f7-77de0837990f'),
+        ],
+      ),
     );
-      /*Column(
+    /*Column(
       children: [
         Padding(
           padding: EdgeInsets.all(
@@ -448,5 +340,279 @@ class TodayTrip extends StatelessWidget {
         //Image(image: AssetImage('assets/today_trip_container.png'),height: 250,width: 386,),
       ],
     );*/
+  }
+
+  Widget BuildPersonToTrack(BuildContext context, String name, String image) {
+    return Padding(
+      padding: EdgeInsets.all(
+        15,
+      ),
+      child: Container(
+        height: 166,
+        width: 396,
+        decoration: BoxDecoration(
+          color: Color(0xffc1cbd1),
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              25,
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 35),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 30.0, // Adjust the radius as needed
+                child: ClipOval(
+                  child: Image.network(
+                    image,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Class 3-B',
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Time to go out',
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        '2.00',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      CircleAvatar(backgroundColor: Colors.green, radius: 5),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'In Bus',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, BusInfo.routeName),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.info,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('Bus Info')
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Spacer(),
+              GestureDetector(
+                child: Container(
+                  width: 90,
+                  height: 33,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    color: Color(0xff0450E3),
+                  ),
+                  child: Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text('Track', textAlign: TextAlign.center)),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, Live.routeName);
+                },
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget BuildPersonNotToTrack(
+      BuildContext context, String name, String image) {
+    return Padding(
+      padding: EdgeInsets.all(
+        15,
+      ),
+      child: Container(
+        height: 166,
+        width: 396,
+        decoration: BoxDecoration(
+          color: Color(0xffc1cbd1),
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              25,
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 10, bottom: 10, right: 35),
+          child: Row(
+            children: [
+              CircleAvatar(
+                radius: 30.0, // Adjust the radius as needed
+                child: ClipOval(
+                  child: Image.network(
+                    image,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    'Class 3-C',
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        'Time to go out',
+                        style: TextStyle(
+                            color: Colors.grey[700],
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        '2.00',
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      CircleAvatar(backgroundColor: Colors.orange, radius: 5),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'In School',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, fontSize: 13),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, BusInfo.routeName),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.info,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('Bus Info')
+                      ],
+                    ),
+                  )
+                ],
+              ),
+              Spacer(),
+              Container(
+                width: 90,
+                height: 33,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                  color: Color(0xff98BBFF),
+                ),
+                child: Padding(
+                    padding: EdgeInsets.only(top: 5),
+                    child: Text('Track', textAlign: TextAlign.center)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

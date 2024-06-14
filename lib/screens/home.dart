@@ -8,11 +8,11 @@ import 'package:mobile_tracker_two/shared/constant.dart';
 import 'live.dart';
 
 class Home extends StatefulWidget {
-Home({super.key});
+  Home({super.key});
 
-static const String routeName = 'home';
-@override
-State<Home> createState() => _HomeState();
+  static const String routeName = 'home';
+  @override
+  State<Home> createState() => _HomeState();
 }
 class _HomeState extends State<Home> {
   int currentIndex = 0;
@@ -41,9 +41,9 @@ class _HomeState extends State<Home> {
         items:
         [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home,),
-              label: 'Home',
-              backgroundColor: secondryColor,
+            icon: Icon(Icons.home,),
+            label: 'Home',
+            backgroundColor: secondryColor,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.location_on_outlined,),
@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
               icon: Icon(
                 //AssetImage('assets/notification.png',),
-                 Icons.notifications_none,
+                Icons.notifications_none,
               ),
               label: 'Notification',
               backgroundColor: secondryColor),

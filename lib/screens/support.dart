@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_tracker_two/shared/constant.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import '../shared/constant.dart';
 import 'home.dart';
 import 'notification.dart';
 
@@ -8,157 +8,123 @@ class Support extends StatelessWidget {
   const Support({super.key});
 
   static const String routeName = 'support';
+  static const String phoneNumber = '01006391255';
+
+  void _launchPhoneDialer(BuildContext context) async {
+    final Uri url = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not launch phone dialer'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       Container(
-          color: thirdColor,
-          child: Scaffold(
-              backgroundColor: Colors.transparent,
-            body: Padding(padding: EdgeInsets.all(11.4),child: Column(
+        color: thirdColor,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Padding(
+            padding: const EdgeInsets.all(11.4),
+            child: Column(
               children: [
-                    Padding(
-                      padding: EdgeInsets.all(
-                        23,
+                Padding(
+                  padding: const EdgeInsets.all(23),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Color(0xffc2ccd2),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(20.0),
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(0xffc2ccd2),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(
-                                20.0,
-                              ),
-                            )),
-                        width: 396,
-                        height: 66.0,
-                        child: Row(
+                    ),
+                    width: 396,
+                    height: 66.0,
+                    child: Row(
+                      children: [
+                        const SizedBox(width: 10.0),
+                        InkWell(
+                          child: Image.asset(
+                            'assets/supervisor_logo.png',
+                            height: 40,
+                            width: 40,
+                          ),
+                          onTap: () =>
+                              Navigator.pushNamed(context, Home.routeName),
+                        ),
+                        const SizedBox(width: 80.0),
+                        const Text(
+                          'Support',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Spacer(),
+                        Stack(
                           children: [
-                            SizedBox(
-                              width: 10.0,
-                            ),
-                            InkWell(
-                              child: Image.asset(
-                                'assets/parent_logo.png',
-                                height: 40,
-                                width: 40,
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 25,
+                                vertical: 10,
                               ),
-                              onTap: () =>
-                                  Navigator.pushNamed(context, Home.routeName),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.red,
+                                radius: 3.0,
+                              ),
                             ),
-                            SizedBox(
-                              width: 80.0,
-                            ),
-                            // IconButton(
-                            //   onPressed: () => Drawer(
-                            //     backgroundColor: thirdColor,
-                            //     child: ListView(
-                            //       children: [
-                            //         const DrawerHeader(
-                            //           decoration: BoxDecoration(
-                            //             color: Color(0xff0C344C),
-                            //           ),
-                            //           child: Image(
-                            //             image: AssetImage(
-                            //               'assets/logo.png',
-                            //             ),
-                            //           ),
-                            //         ),
-                            //         ListTile(
-                            //           title: const Image(
-                            //             image: AssetImage(
-                            //               'assets/today_trips.png',
-                            //             ),
-                            //           ),
-                            //           onTap: () {
-                            //             // Update the state of the app.
-                            //             // ...
-                            //           },
-                            //         ),
-                            //         ListTile(
-                            //           title: const Image(
-                            //             image: AssetImage(
-                            //               'assets/live.png',
-                            //             ),
-                            //           ),
-                            //           onTap: () {
-                            //             // Update the state of the app.
-                            //             // ...
-                            //           },
-                            //         ),
-                            //         ListTile(
-                            //           title: const Image(
-                            //             image: AssetImage(
-                            //               'assets/face_recongnition.png',
-                            //             ),
-                            //           ),
-                            //           onTap: () {
-                            //             // Update the state of the app.
-                            //             // ...
-                            //           },
-                            //         ),
-                            //         ListTile(
-                            //           title: const Image(
-                            //             image: AssetImage(
-                            //               'assets/student_sheet.png',
-                            //             ),
-                            //           ),
-                            //           onTap: () {
-                            //             // Update the state of the app.
-                            //             // ...
-                            //           },
-                            //         ),
-                            //       ],
-                            //     ),
-                            //   ),
-                            //   icon: Icon(
-                            //     Icons.menu,
-                            //     color: Colors.black,
-                            //   ),
-                            // ),
-                            // SizedBox(
-                            //   width: 50.0,
-                            // ),
-                            Text(
-                              ' Support',
-                              style: TextStyle(
-                                  fontSize: 20.0, fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              width: 40.0,
-                            ),
-                            Stack(
-                              children: [
-                                Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 25, vertical: 10),
-                                    child: CircleAvatar(
-                                      backgroundColor: Colors.red,
-                                      radius: 3.0,
-                                    )),
-                                IconButton(
-                                  onPressed: () => Navigator.pushNamed(
-                                      context, Notifications.routeName),
-                                  icon: Icon(Icons.notifications_none,
-                                      color: Colors.black),
-                                )
-                              ],
+                            IconButton(
+                              onPressed: () =>
+                                  Navigator.pushNamed(context, Notifications.routeName),
+                              icon: const Icon(
+                                Icons.notifications_none,
+                                color: Colors.black,
+                              ),
                             ),
                           ],
                         ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15.0),
+                Image.asset('assets/how_can_we_help_you_today.png'),
+                const SizedBox(height: 60.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      size: 30.0,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 20.0),
+                    InkWell(
+                      onTap: () => _launchPhoneDialer(context),
+                      child: Text(
+                        phoneNumber,
+                        style: const TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: 15.0,
-                    ),
-                    Image.asset('assets/how_can_we_help_you_today.png'),
-                    SizedBox(
-                      height: 60.0,
-                    ),
-                    Image.asset('assets/rectangle_phone.png'),
                   ],
-            ),)
-        )
-    )]);
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ]);
   }
 }
