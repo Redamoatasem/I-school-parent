@@ -53,7 +53,7 @@ class Support extends StatelessWidget {
                         const SizedBox(width: 10.0),
                         InkWell(
                           child: Image.asset(
-                            'assets/supervisor_logo.png',
+                            'assets/parent_logo.png',
                             height: 40,
                             width: 40,
                           ),
