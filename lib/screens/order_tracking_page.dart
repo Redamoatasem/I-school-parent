@@ -27,7 +27,7 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
   void initState() {
     super.initState();
     BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(size: Size(20, 20)), 'assets/take_care_of_child.png'
+        ImageConfiguration(size: Size(20, 20)), 'assets/School_logoo.jpg'
     ).then((onValue) {
       myIcon = onValue;
     }).catchError((error) {
@@ -35,9 +35,8 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
     });
     _createCustomMarker();
   }
-
   Future<void> _createCustomMarker() async {
-    final ByteData data = await rootBundle.load('assets/take_care_of_child.png');
+    final ByteData data = await rootBundle.load('assets/School_logoo.jpg');
     final ui.Codec codec = await ui.instantiateImageCodec(
       data.buffer.asUint8List(),
       targetWidth: 100,
